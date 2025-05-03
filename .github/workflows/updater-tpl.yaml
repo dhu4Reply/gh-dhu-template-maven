@@ -1,0 +1,30 @@
+on:
+  workflow_call:
+    inputs:
+      template:
+        type: string
+    secrets:
+      gh_token:
+        required: true
+jobs:
+  mvn:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: actions-template-sync
+        uses: AndreasAugustin/actions-template-sync@v2.5
+        with:
+          source_gh_token: ${{ secrets.gh_token }}
+          source_repo_path: ${{ inputs.template }}
+          GITHUB_TOKEN: ${{ secrets.gh_token }}
+          target_gh_token: ${{ secrets.gh_token }}
+          upstream_branch: main
+          pr_branch_name_prefix: updater
+          pr_title: upstream template update
+          pr_body: update from template ${SOURCE_REPO} with revision ${TEMPLATE_GIT_HASH} <br> please rescue all your own changes that are still relevant by manually editing the PR source branch
+          is_pr_cleanup: true #closes old PRs of updater

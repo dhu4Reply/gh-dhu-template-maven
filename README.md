@@ -1,1 +1,1 @@
-# dhl-gh-cdaas-template-maven
+# gh-dhu-template-maven

@@ -1,0 +1,10 @@
+name: updater
+on:
+  workflow_dispatch:
+jobs:
+  update:
+    uses: ./.github/workflows/updater-tpl.yaml
+    with:
+      template: dhu4Reply/gh-dhu-template-maven
+    secrets:
+      gh_token: ${{ secrets.GH_TOKEN }}

@@ -1,0 +1,10 @@
+name: fixer
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  fixer:
+    runs-on: arc-small
+    steps:
+      - run: echo '${{ github.event.issue }}'

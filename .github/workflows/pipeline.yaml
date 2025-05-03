@@ -1,0 +1,12 @@
+name: gh-dhu-template-maven
+on:
+  workflow_dispatch:
+
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello World
+        run: echo "Hello World"
+
+  
