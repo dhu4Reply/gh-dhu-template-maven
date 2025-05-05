@@ -23,7 +23,7 @@ trap 'rm -f "$body_file"' EXIT
 
 # 5) Pro File den Conflict-Block anhängen
 for file in $conflict_files; do
-  echo "#### File: $file" >> "$body_file"
+  echo "- [ ] Resolve conflicts in file: $file" >> "$body_file"
   echo >> "$body_file"
   echo '```diff'       >> "$body_file"
   awk '/^<<<<<<< /, /^>>>>>>> /' "$file" | sed 's/```/\\`\\`\\`/g' >> "$body_file"
