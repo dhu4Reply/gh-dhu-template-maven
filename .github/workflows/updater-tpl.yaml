@@ -13,8 +13,29 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - name: Checkout
+    
+      - name: Checkout current branch
         uses: actions/checkout@v4
+          
+      - name: Checkout CDaaS workflow
+        uses: actions/checkout@v4
+        with:
+          repository: dhu4Reply/gh-dhu-template-maven   # ← the repo where your script lives
+          path: cdaas-workflow                           # ← will clone into $GITHUB_WORKSPACE/cdaas-workflow
+          ref: main
+        
+      - name: Prepare AndreasAugustin env
+        run: |
+         pwd
+         ls -la
+         mv cdaas-workflow/templatesync.yml .
+         if [ ! -f .templatesyncignore ]; then
+          cp cdaas-workflow/.templatesyncignore .
+         else
+          cat cdaas-workflow/.templatesyncignore >> .templatesyncignore
+         fi
+         ls -la
+         cat .templatesyncignore
 
       - name: actions-template-sync
         uses: AndreasAugustin/actions-template-sync@v2.5
@@ -24,7 +45,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.gh_token }}
           target_gh_token: ${{ secrets.gh_token }}
           upstream_branch: main
+          git_remote_pull_params: --allow-unrelated-histories --squash --strategy=recursive 
           pr_branch_name_prefix: updater
           pr_title: upstream template update
           pr_body: update from template ${SOURCE_REPO} with revision ${TEMPLATE_GIT_HASH} <br> please rescue all your own changes that are still relevant by manually editing the PR source branch
           is_pr_cleanup: true #closes old PRs of updater
+          is_allow_hooks: true

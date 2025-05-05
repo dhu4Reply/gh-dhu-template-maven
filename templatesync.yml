@@ -1,5 +1,5 @@
 hooks:
   prepush:
     commands:
-      - echo "Running prepush cleanup…"
+      - echo "Analyse merge conflicts"
       - ./cdaas-workflow/scripts/create-merge-conflict-issue.sh
