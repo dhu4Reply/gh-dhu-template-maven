@@ -1,6 +1,0 @@
-
-# these are copied into the target repo
-.gitignore
-cdaas-workflow
-templatesync.yml
-
