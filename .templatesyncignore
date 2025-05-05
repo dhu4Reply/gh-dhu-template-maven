@@ -3,4 +3,4 @@
 .gitignore
 scripts/create-merge-conflict-issue.sh
 .github/workflows/*
-
+.templatesyncignore
