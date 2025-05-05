@@ -10,4 +10,4 @@ hooks:
       - git status
       - git grep -l '^<<<<<<<'
       - git grep -n '^<<<<<<<'
-      - ./scripts/create-merge-conflict-issue.sh
+      - ./cdaas-template/scripts/create-merge-conflict-issue.sh
