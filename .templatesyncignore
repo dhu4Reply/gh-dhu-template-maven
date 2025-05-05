@@ -1,5 +1,6 @@
 
 # for now we need to ignore workflows, because updater will fail if we try to update them
 .gitignore
+scripts/create-merge-conflict-issue.sh
 .github/workflows/*
 
