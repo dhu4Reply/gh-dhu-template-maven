@@ -1,2 +1,6 @@
 # for now we need to ignore workflows, because updater will fail if we try to update them
 .github/workflows/*
+
+# these are copied into the target repo
+cdaas-workflow
+templatesync.yml
