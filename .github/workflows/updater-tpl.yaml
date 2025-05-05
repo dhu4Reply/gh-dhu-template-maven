@@ -13,7 +13,6 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-    
       - name: Checkout current branch
         uses: actions/checkout@v4
           
@@ -25,25 +24,12 @@ jobs:
           ref: main
         
       - name: Prepare AndreasAugustin env
-        run: |
-         pwd
-         ls -la
-         mv cdaas-workflow/templatesync.yml .
-         if [ ! -f .templatesyncignore ]; then
-          cp cdaas-workflow/.templatesyncignore .
-         else
-          cat cdaas-workflow/.templatesyncignore >> .templatesyncignore
-         fi
-         ls -la
-         cat .templatesyncignore
+        run: mv cdaas-workflow/templatesync.yml .
 
       - name: actions-template-sync
         uses: AndreasAugustin/actions-template-sync@v2.5
         with:
-          source_gh_token: ${{ secrets.gh_token }}
           source_repo_path: ${{ inputs.template }}
-          GITHUB_TOKEN: ${{ secrets.gh_token }}
-          target_gh_token: ${{ secrets.gh_token }}
           upstream_branch: main
           git_remote_pull_params: --allow-unrelated-histories --squash --strategy=recursive 
           pr_branch_name_prefix: updater
