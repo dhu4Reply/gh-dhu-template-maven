@@ -26,7 +26,7 @@ for file in $conflict_files; do
   echo "#### File: $file" >> "$body_file"
   echo >> "$body_file"
   echo '```diff'       >> "$body_file"
-  awk '/^<<<<<<< /, /^>>>>>>> /' "$file" >> "$body_file"
+  awk '/^<<<<<<< /, /^>>>>>>> /' "$file" | sed 's/```/\\`\\`\\`/g' >> "$body_file"
   echo '```'            >> "$body_file"
   echo                 >> "$body_file"
 done
