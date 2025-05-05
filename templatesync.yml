@@ -1,9 +1,4 @@
 hooks:
-  precommit:
-    commands:
-      - echo "Running precommit cleanup…"
-      - git status
-      - git grep -l '^<<<<<<<'
   prepush:
     commands:
       - echo "Running prepush cleanup…"
