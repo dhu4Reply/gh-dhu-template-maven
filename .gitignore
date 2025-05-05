@@ -15,3 +15,7 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
+# CDasS Workflow files
+cdaas-workflow
+templatesync.yml
