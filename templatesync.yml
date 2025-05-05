@@ -1,9 +1,4 @@
 hooks:
-  precommit:
-    commands:
-      - echo "Running precommit cleanup…"
-      - git restore .gitignore
-      - git status
   prepush:
     commands:
       - echo "Running prepush cleanup…"
