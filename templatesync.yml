@@ -2,7 +2,4 @@ hooks:
   prepush:
     commands:
       - echo "Running prepush cleanup…"
-      - git status
-      - git grep -l '^<<<<<<<'
-      - git grep -n '^<<<<<<<'
-      - ./cdaas-template/scripts/create-merge-conflict-issue.sh
+      - ./cdaas-workflow/scripts/create-merge-conflict-issue.sh
