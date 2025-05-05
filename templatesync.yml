@@ -1,0 +1,13 @@
+hooks:
+  precommit:
+    commands:
+      - echo "Running precommit cleanup…"
+      - git status
+      - git grep -l '^<<<<<<<'
+  prepush:
+    commands:
+      - echo "Running prepush cleanup…"
+      - git status
+      - git grep -l '^<<<<<<<'
+      - git grep -n '^<<<<<<<'
+      - ./scripts/create-merge-conflict-issue.sh
